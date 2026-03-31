@@ -10,6 +10,7 @@ CortexCLI is an advanced command-line interface chat application that provides s
 - Persistent chat history during sessions
 - Clean and intuitive user interface
 - Extensible architecture for adding new providers and features
+- Docker containerization for easy deployment and consistent environments
 
 ## Architecture Overview
 
@@ -47,9 +48,10 @@ The application follows a modular architecture pattern with clearly defined comp
 
 ### Prerequisites
 
-- Python 3.8 or higher
+- Python 3.8 or higher (for direct installation)
 - pip package manager
 - Virtual environment (recommended)
+- Docker (for containerized deployment)
 
 ### Dependencies
 
@@ -61,7 +63,7 @@ The application requires the following Python packages:
 - ollama: Client library for Ollama local AI models
 - python-dotenv: Environment variable management
 
-### Setup Process
+### Setup Process (Direct Installation)
 
 1. Clone the repository:
    ```bash
@@ -87,9 +89,37 @@ The application requires the following Python packages:
    OPENAI_API_KEY=your_openai_api_key_here  # If using OpenAI
    ```
 
+### Setup Process (Docker Installation)
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd CortexCLI
+   ```
+
+2. Build the Docker image:
+   ```bash
+   docker build -t cortexcli .
+   ```
+
+3. Run the container with environment variables:
+   ```bash
+   docker run -it --env-file .env cortexcli
+   ```
+
+   Or use docker-compose:
+   ```bash
+   docker-compose up
+   ```
+
+4. For development with live code changes:
+   ```bash
+   docker-compose run --rm cortexcli
+   ```
+
 ## Usage
 
-### Running the Application
+### Running the Application (Direct Installation)
 
 To start the CortexCLI application:
 ```bash
@@ -97,6 +127,18 @@ python main.py
 ```
 
 Once launched, you'll be presented with a terminal-based chat interface where you can interact with the AI providers.
+
+### Running the Application (Docker)
+
+To run the application in a Docker container:
+```bash
+docker run -it --env-file .env cortexcli
+```
+
+Or with docker-compose:
+```bash
+docker-compose up
+```
 
 ### Interaction Methods
 
@@ -145,6 +187,8 @@ CortexCLI/
 ├── utils/
 │   ├── config.py (placeholder)
 │   └── file_parser.py (placeholder)
+├── Dockerfile
+├── docker-compose.yml
 ├── main.py
 ├── requirements.txt
 └── README.md
@@ -158,6 +202,20 @@ To extend the application with additional AI providers:
 2. Implement the required interface methods
 3. Update the agent configuration to include the new provider
 4. Add any necessary environment variables
+
+### Docker Development
+
+For development with Docker:
+
+1. Modify code files locally (they are mounted as volumes in the container)
+2. Rebuild the image when adding new dependencies:
+   ```bash
+   docker-compose build
+   ```
+3. Run tests in the container:
+   ```bash
+   docker-compose run --rm cortexcli python -m pytest
+   ```
 
 ### Code Standards
 

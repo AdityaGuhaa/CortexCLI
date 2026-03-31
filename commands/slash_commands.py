@@ -8,4 +8,4 @@ class CommandHandler:
         elif command == "/exit":
             self.app.exit()
         else:
-            self.app.add_message("System", f"Unknown command: {command}")
+            self.app.add_message("System", f"Unknown command: {command}", "red")
