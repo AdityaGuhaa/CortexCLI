@@ -1,16 +1,30 @@
 from providers.gemini import GeminiProvider
+from providers.ollama import OllamaProvider
 
 
 class Agent:
     def __init__(self):
-        self.provider = GeminiProvider()
+        self.providers = {
+            "gemini": GeminiProvider(),
+            "ollama": OllamaProvider()
+        }
+
+        self.current_provider = "gemini"
         self.memory = []
+
+    def switch_provider(self, name: str) -> str:
+        if name in self.providers:
+            self.current_provider = name
+            return f"Switched to {name}"
+        return f"Unknown provider: {name}"
 
     def handle_query(self, query: str) -> str:
         self.memory.append({"role": "user", "content": query})
 
         prompt = self.build_prompt()
-        response = self.provider.generate(prompt)
+        provider = self.providers[self.current_provider]
+
+        response = provider.generate(prompt)
 
         self.memory.append({"role": "assistant", "content": response})
         return response

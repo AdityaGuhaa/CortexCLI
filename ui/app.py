@@ -48,14 +48,14 @@ class ChatApp(App):
         self.chat_container = VerticalScroll(id="chat_container")
         yield self.chat_container
 
-        self.input = Input(placeholder="Ask something... (/clear, /exit)")
+        self.input = Input(placeholder="Ask something... (/model, /clear, /exit)")
         yield self.input
 
         yield Footer()
 
     def on_mount(self):
         self.chat_display = Static(
-            Markdown("# CortexCLI\n\n_AI-powered terminal assistant ready..._")
+            Markdown("# CortexCLI\n\n AI-powered terminal assistant ready!\n\n Choose Model by (/model gemini) or (/model ollama)")
         )
         self.chat_container.mount(self.chat_display)
 
