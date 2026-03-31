@@ -1,0 +1,6 @@
+textual
+rich
+google-generativeai
+openai
+ollama
+python-dotenv
