@@ -2,6 +2,10 @@
 
 CortexCLI is an advanced command-line interface chat application that provides seamless interaction with multiple artificial intelligence providers through a unified Textual-based terminal interface. Built with Python, this application offers developers and users a powerful tool for accessing various AI models without leaving their terminal environment.
 
+<img width="1920" height="1080" alt="1" src="https://github.com/user-attachments/assets/ecec349f-0a4d-4a4a-9cb5-ff64088d70b7" />
+<img width="1920" height="1080" alt="2" src="https://github.com/user-attachments/assets/9d39708e-ff11-494a-bf00-1b45bd173a96" />
+<img width="1920" height="1080" alt="3" src="https://github.com/user-attachments/assets/b052b5a3-015a-48c0-b98a-f13860b3dcf4" />
+
 ## Features
 
 - Interactive terminal-based chat interface using Textual framework
